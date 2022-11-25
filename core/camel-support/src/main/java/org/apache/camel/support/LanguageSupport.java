@@ -119,7 +119,7 @@ public abstract class LanguageSupport implements Language, IsSingleton, CamelCon
      * @return              the value converted to the expected type
      */
     protected <T> T property(Class<T> type, Object[] properties, int index, Object defaultValue) {
-        Object value = properties != null ? properties[index] : null;
+        Object value = properties == null || index >= properties.length ? null : properties[index];
         if (value == null) {
             value = defaultValue;
         }
